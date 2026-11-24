@@ -2,7 +2,7 @@
 
 Two layers, plus the repo contract. A fact lives in exactly one of them.
 
-In repos that adopt pika's default scheme, `init` creates the empty directories `docs/prd/` and `docs/spec/`; the files inside are created lazily by the command that earns them. When an existing scheme wins, nothing new is created.
+In repos that adopt pika's default scheme, `init` creates the empty directories `docs/prd/` and `docs/adr/`; the files inside are created lazily by the command that earns them. When an existing scheme wins, nothing new is created.
 
 ## PRD — `docs/prd/PRD-<slug>.md`
 
@@ -27,21 +27,21 @@ Out: ...
 Command(s) to run and expected result.
 
 ## Links
-spec: docs/spec/<domain>.md#<section> · issue: ...
+adr: docs/adr/<domain>.md#<section> · issue: ...
 ```
 
 Rules:
-- Never copy behavior text from the spec. Link to it.
+- Never copy behavior text from the adr. Link to it.
 - Every task traces to a behavior, constraint, or acceptance check. Cut tasks that trace to nothing.
 - Created only when the change has ≥3 tasks or spans sessions.
 - `build` owns `status`: `draft` when created, `active` when work starts, `done` once verified.
 
-## Spec — `docs/spec/<domain>.md`
+## ADR — `docs/adr/<domain>.md`
 
-Decision layer. Durable. One file per domain or capability, patched in place.
+Decision layer. Durable. One file per domain or capability, patched in place — not one file per decision.
 
 ```md
-# <domain> — spec
+# <domain> — adr
 updated: YYYY-MM-DD
 
 ## Behavior
@@ -78,4 +78,4 @@ Created lazily, only when deferred real work starts accumulating across features
 
 ## AGENTS.md
 
-Repo contract, written and refreshed by `init`, 40 lines or fewer. Holds commands, layout, `Never`, `Ask first`, and at most 5 cross-cutting irreversible decisions as one-liners. Details link to the relevant spec.
+Repo contract, written and refreshed by `init`, 40 lines or fewer. Holds commands, layout, `Never`, `Ask first`, and at most 5 cross-cutting irreversible decisions as one-liners. Details link to the relevant adr.

@@ -15,7 +15,7 @@ Small clear change → do it. Needs adversarial pressure → `grill`. Missing fa
 
 1. **Trivial bail.** If the brute-force version takes under ~30 minutes and is low risk, say so and do it.
 2. **Restate** the ask in one line, then `Assumptions I'm making:` as bullets. If an assumption is load-bearing, ask before continuing.
-3. **Collision check.** Does the repo already solve this? Search specs (including recorded decisions) and code. Also check 2–3 mature OSS implementations for the official way.
+3. **Collision check.** Does the repo already solve this? Search the adr docs (including recorded decisions) and code. Also check 2–3 mature OSS implementations for the official way.
 4. **Premise collapse.** Name the most fragile assumption and what the plan looks like if it is false.
 5. **Options.** One recommended, one minimal (fewest moving parts). One-line trade-off each. Never a menu of five.
 6. **Simplicity gate.** Every new abstraction, retry, flag, or config must map to a named failure mode. Prefer +0 new surface.

@@ -20,9 +20,9 @@ Or copy `skills/*/` into `.claude/skills/`, `.agents/skills/`, or `.qoder/skills
 | `init` | Writes AGENTS.md and verifies every command in it | New or unfamiliar repo |
 | `research` | Facts from primary sources, version-pinned | A decision is blocked on a missing fact |
 | `think` | One recommended approach, in conversation, no files | The ask is vague or several designs compete |
-| `grill` | Frontier-round interview; writes PRD/spec only when earned | A plan needs stress-testing |
-| `build` | Vertical slices, test-first at agreed seams, spec kept in sync | A PRD or task list exists |
-| `check` | Two-axis review (Standards + Spec) with evidence | Before merge, on any branch |
+| `grill` | Frontier-round interview; writes PRD/adr only when earned | A plan needs stress-testing |
+| `build` | Vertical slices, test-first at agreed seams, adr kept in sync | A PRD or task list exists |
+| `check` | Two-axis review (Standards + ADR) with evidence | Before merge, on any branch |
 | `improve` | Architecture scan with a deletion test | Every few weeks, or when the code feels heavy |
 
 ## The chain
@@ -40,7 +40,7 @@ Not linear: `check` works on any branch, `research` fires whenever a fact is mis
 |---|---|---|
 | `AGENTS.md` | Repo contract: commands, layout, never/ask-first | Refreshed by `init` |
 | `docs/prd/PRD-<slug>.md` | Task layer: change, tasks, acceptance | Ephemeral — delete when done |
-| `docs/spec/<domain>.md` | Decision layer: behavior, constraints, interfaces, append-only decisions | Durable — patched in place |
+| `docs/adr/<domain>.md` | Decision layer: behavior, constraints, interfaces, append-only decisions | Durable — patched in place |
 | `docs/BACKLOG.md` | Deferred work that outlives a PRD | Optional, one line per item |
 
 ## Human checkpoints

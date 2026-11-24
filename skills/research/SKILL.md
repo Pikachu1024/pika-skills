@@ -25,7 +25,7 @@ The repo or established knowledge already answers it → answer directly, no res
    Implication for this repo: ...
    ```
 
-5. **Persist only what will be re-read.** Durable constraints → spec `Constraints` / `Interfaces` with the source link, when that spec exists; otherwise hand them to the caller to record. Task-scoped facts → PRD `Links`. No standalone research file unless the user asks.
+5. **Persist only what will be re-read.** Durable constraints → adr `Constraints` / `Interfaces` with the source link, when that adr exists; otherwise hand them to the caller to record. Task-scoped facts → PRD `Links`. No standalone research file unless the user asks.
 
 ## Done when
 
