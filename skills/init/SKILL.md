@@ -24,29 +24,6 @@ AGENTS.md exists, is accurate, and nothing structural changed → skip, unless `
 ````md
 # <repo>
 
-## Commands
-install: | dev: | test: | test one: | lint: | typecheck:
-
-## Layout
-3–6 lines: where the important things live.
-
-## Conventions
-≤10 bullets, only non-obvious or enforced ones.
-
-## Never
-Repo-wide prohibitions, one line each.
-
-## Ask first
-Destructive or shared actions: pushes, migrations, deploys, deletions.
-
-## Artifacts
-PRD: docs/prd (ephemeral work orders; delete when done)
-ADR: docs/adr (durable: behavior, constraints, interfaces, decisions)
-Backlog: docs/BACKLOG.md (optional; one line per deferred task; delete when done)
-
-## Decisions
-≤5 one-liners: cross-cutting, irreversible choices. Details live in the adr.
-
 ## Behavioral guidelines
 
 Behavioral guidelines to reduce common LLM coding mistakes, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
@@ -108,9 +85,32 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## Commands
+install: | dev: | test: | test one: | lint: | typecheck:
+
+## Layout
+3–6 lines: where the important things live.
+
+## Conventions
+≤10 bullets, only non-obvious or enforced ones.
+
+## Never
+Repo-wide prohibitions, one line each.
+
+## Ask first
+Destructive or shared actions: pushes, migrations, deploys, deletions.
+
+## Artifacts
+PRD: docs/prd (ephemeral work orders; delete when done)
+ADR: docs/adr (durable: behavior, constraints, interfaces, decisions)
+Backlog: docs/BACKLOG.md (optional; one line per deferred task; delete when done)
+
+## Decisions
+≤5 one-liners: cross-cutting, irreversible choices. Details live in the adr.
 ````
 
-The Behavioral guidelines section is fixed boilerplate: copy it verbatim into every AGENTS.md; it does not count toward the 40-line repo-specific budget.
+The Behavioral guidelines section is fixed boilerplate: it goes at the top, right after the title, and is copied verbatim into every AGENTS.md; it does not count toward the 40-line repo-specific budget.
 
 ## Done when
 
