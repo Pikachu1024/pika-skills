@@ -1,11 +1,11 @@
 ---
 name: init
-description: "Bootstrap or refresh a repo's AGENTS.md with verified commands, layout, conventions, repo-wide prohibitions, and artifact locations. Use on a new or unfamiliar repo, when AGENTS.md is missing or stale, or 初始化项目 / 配置仓库 / 刷新 AGENTS.md."
+description: "Bootstrap or refresh a repo's AGENTS.md with verified commands, layout, conventions, repo-wide prohibitions, and artifact locations; scaffolds a best-practice skeleton for empty repos. Use on a new or unfamiliar repo, when AGENTS.md is missing or stale, or 初始化项目 / 配置仓库 / 刷新 AGENTS.md."
 ---
 
 # init
 
-Goal: an AGENTS.md a fresh agent can act on: repo-specific content in 40 lines or fewer, plus the fixed Behavioral guidelines block.
+Goal: an AGENTS.md a fresh agent can act on — repo-specific content in 40 lines or fewer plus the fixed Behavioral guidelines block — and, for an empty repo, a best-practice directory skeleton to start from.
 
 ## When not to use
 
@@ -13,11 +13,23 @@ AGENTS.md exists, is accurate, and nothing structural changed → skip, unless `
 
 ## Process
 
-1. **Inspect before asking.** Read manifests and CI (`package.json`, `pyproject.toml`, `Makefile`, `justfile`, `.github/workflows`), existing docs (`docs/spec/`, `openspec/`, `specs/`, `.trellis/`), and `CLAUDE.md` / `.cursor/rules`. Report what you found in 5 lines.
+1. **Inspect before asking.** Read manifests and CI (`package.json`, `pyproject.toml`, `Makefile`, `justfile`, `.github/workflows`), existing docs (`docs/spec/`, `openspec/`, `specs/`, `.trellis/`), and `CLAUDE.md` / `.cursor/rules`. Report what you found in 5 lines, including whether the repo is empty: no manifest and no code files — only `.git/`, `README`, `LICENSE`, `.gitignore`.
 2. **Match existing conventions.** If the repo already has a scheme for decisions, specs, or proposals, point AGENTS.md at it and say which one won. Do not create a second scheme, and do not create `docs/prd/` or `docs/adr/`.
-3. **Detect commands, then prove them.** Copy commands from the repo; never invent them. Run the test and lint commands once. A command you did not run is not done.
-4. **Draft, one confirmation, then write.** Show the full AGENTS.md and ask exactly one question: "write it?". On yes: write AGENTS.md. Under pika's default scheme also create the empty directories `docs/prd/` and `docs/adr/`; when an existing scheme wins, create nothing new. If `CLAUDE.md` exists append a one-line pointer to AGENTS.md instead of duplicating content. Do not create `docs/BACKLOG.md` — that stays lazy.
+3. **Consult only empty repos.** If the repo has any manifest or code file, skip to step 4 and never scaffold. Otherwise ask one batched question round: project kind (application / service / CLI / library / monorepo), stack, and — only when it changes folder structure — architecture (layered vs feature-based). No follow-up rounds.
+4. **Draft skeleton and AGENTS.md together, one confirmation.** Show the file tree to create plus the full AGENTS.md, then ask exactly one question: "write it?". On yes: create the skeleton (layouts below), write AGENTS.md, and run test and lint once; a command you did not run, or that does not pass, is not listed. For existing repos, skip the skeleton and only write AGENTS.md. Copy commands from the repo; never invent them. Under pika's default scheme also create the empty directories `docs/prd/` and `docs/adr/`; when an existing scheme wins, create nothing new. If `CLAUDE.md` exists append a one-line pointer to AGENTS.md instead of duplicating content. Do not create `docs/BACKLOG.md` — that stays lazy.
 5. **Refresh mode.** Diff current reality against AGENTS.md, patch only stale sections, keep the user's wording. Re-create `docs/prd/` and `docs/adr/` if missing, but only in repos that use pika's default scheme.
+
+## Skeleton layouts
+
+Start from the stack's official layout; when there is none, use:
+
+- library: `src/` + `tests/` + manifest + `README.md` + `.gitignore`
+- CLI: `src/` + `bin/` + `tests/`
+- application: `src/` (components, pages, lib) + `public/` + `tests/`
+- service: `src/` split by domain and adapters + `tests/`
+- monorepo: `apps/` + `packages/`
+
+Every skeleton gets a manifest with working test and lint scripts, an entry point, one passing test, and `.gitignore`. Never overwrite an existing file, and never install dependencies or run framework generators without asking.
 
 ## Template
 
@@ -114,4 +126,4 @@ The Behavioral guidelines section is fixed boilerplate: it goes at the top, righ
 
 ## Done when
 
-AGENTS.md exists and contains the Behavioral guidelines block verbatim, `docs/prd/` and `docs/adr/` exist (default scheme only), every command listed in AGENTS.md was executed successfully, and the artifact section matches what is actually on disk. Name the next command: `grill` or `build`.
+AGENTS.md exists and contains the Behavioral guidelines block verbatim; an empty repo now has its agreed skeleton on disk, while a repo with code was touched only at AGENTS.md; `docs/prd/` and `docs/adr/` exist (default scheme only); every command listed in AGENTS.md ran green; the artifact section matches what is actually on disk. Name the next command: `grill` or `build`.

@@ -17,7 +17,7 @@ Or copy `skills/*/` into `.claude/skills/`, `.agents/skills/`, or `.qoder/skills
 | Skill | Does | Reach for it when |
 |---|---|---|
 | `pika` | Router and shared rules; names the next command | You are unsure which command fits |
-| `init` | Writes AGENTS.md and verifies every command in it | New or unfamiliar repo |
+| `init` | Writes AGENTS.md, verifies every command, scaffolds a skeleton for empty repos | New or unfamiliar repo |
 | `research` | Facts from primary sources, version-pinned | A decision is blocked on a missing fact |
 | `think` | One recommended approach, in conversation, no files | The ask is vague or several designs compete |
 | `grill` | Frontier-round interview; writes PRD/adr only when earned | A plan needs stress-testing |
