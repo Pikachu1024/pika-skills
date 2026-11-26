@@ -109,7 +109,7 @@ install: | dev: | test: | test one: | lint: | typecheck:
 - Type-annotate every named function/method (params + return; use the language's idiomatic types) and document every class/function/method. Private helpers and test functions are included — privacy is never an exemption. Document purpose, each parameter, the return value, and anything thrown/raised; follow the repo's existing doc style when one exists.
 - Follow class and function best practices: keep each method with the data and responsibility it serves — instance methods for instance state, class methods for class-level state or alternate constructors, and free functions for logic that needs neither (a static method only when it genuinely belongs to the class's API). Keep classes single-purpose and cohesive; don't turn a class into a dumping ground for unrelated helpers, and don't create a class just to namespace stateless functions.
 - Reply in Chinese by default; switch to another language only when the user writes in it.
-- When a term, piece of logic, or English phrase is hard to parse, gloss it inline in parentheses — the original plus a one-line plain explanation — the first time it appears; never wait for the user to ask.
+- Only gloss specialized jargon, awkward phrasing, or abstract concepts — not every English word or commonplace term — inline in parentheses (the original plus a one-line plain explanation) the first time it appears; never wait for the user to ask.
 
 ## Never
 Repo-wide prohibitions, one line each.
