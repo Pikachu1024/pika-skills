@@ -17,7 +17,7 @@ AGENTS.md exists, is accurate, and nothing structural changed → skip, unless `
 2. **Match existing conventions.** If the repo already has a scheme for decisions, specs, or proposals, point AGENTS.md at it and say which one won. Do not create a second scheme, and do not create `docs/prd/` or `docs/adr/`.
 3. **Consult only empty repos.** If the repo has any manifest or code file, skip to step 4 and never scaffold. Otherwise ask one batched question round: project kind (application / service / CLI / library / monorepo), stack, and — only when it changes folder structure — architecture (layered vs feature-based). No follow-up rounds.
 4. **Draft skeleton and AGENTS.md together, one confirmation.** Show the file tree to create plus the full AGENTS.md, then ask exactly one question: "write it?". On yes: create the skeleton (layouts below), write AGENTS.md, and run test and lint once; a command you did not run, or that does not pass, is not listed. For existing repos, skip the skeleton and only write AGENTS.md. Copy commands from the repo; never invent them. Under pika's default scheme also create the empty directories `docs/prd/` and `docs/adr/`; when an existing scheme wins, create nothing new. If `CLAUDE.md` exists append a one-line pointer to AGENTS.md instead of duplicating content. Do not create `docs/BACKLOG.md` — that stays lazy.
-5. **Refresh mode.** Diff current reality against AGENTS.md, patch only stale sections, keep the user's wording. Re-create `docs/prd/` and `docs/adr/` if missing, but only in repos that use pika's default scheme. Move the Behavioral guidelines block back to the top verbatim if it drifted.
+5. **Refresh mode.** Diff current reality against AGENTS.md, patch only stale sections, keep the user's wording. Re-create `docs/prd/` and `docs/adr/` if missing, but only in repos that use pika's default scheme. Move the Behavioral guidelines block back to the top verbatim if it drifted. If `Conventions` lacks the typing/docstring rule, add it — private helpers and tests are never exempt.
 
 ## Skeleton layouts
 
@@ -105,7 +105,8 @@ install: | dev: | test: | test one: | lint: | typecheck:
 3–6 lines: where the important things live.
 
 ## Conventions
-≤10 bullets, only non-obvious or enforced ones.
+≤10 bullets, only non-obvious or enforced ones. Always include the typing/docstring rule:
+- Type-annotate every named function/method (params + return; use the language's idiomatic types) and document every class/function/method. Private helpers and test functions are included — privacy is never an exemption. Document purpose, each parameter, the return value, and anything thrown/raised; follow the repo's existing doc style when one exists.
 
 ## Never
 Repo-wide prohibitions, one line each.
@@ -126,4 +127,4 @@ Backlog: docs/BACKLOG.md (optional; one line per deferred task; delete when done
 
 ## Done when
 
-AGENTS.md exists and opens with the Behavioral guidelines block verbatim as the first section after the title; an empty repo now has its agreed skeleton on disk, while a repo with code was touched only at AGENTS.md; `docs/prd/` and `docs/adr/` exist (default scheme only); every command listed in AGENTS.md ran green; the artifact section matches what is actually on disk. Name the next command: `grill` or `build`.
+AGENTS.md exists and opens with the Behavioral guidelines block verbatim as the first section after the title; an empty repo now has its agreed skeleton on disk, while a repo with code was touched only at AGENTS.md; `docs/prd/` and `docs/adr/` exist (default scheme only); `Conventions` carries the typing/docstring rule with private helpers and tests never exempt; every command listed in AGENTS.md ran green; the artifact section matches what is actually on disk. Name the next command: `grill` or `build`.
